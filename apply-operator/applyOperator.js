@@ -1,6 +1,6 @@
 
-function applyOperator(...args) {
-  return args;
+function applyOperator(*n) {
+  return (sum(n));
 }
 
 export {
