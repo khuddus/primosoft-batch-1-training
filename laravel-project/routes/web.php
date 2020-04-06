@@ -12,4 +12,10 @@
 */
 
 
-Route::get('/posts/{post}','PostsController@show');
+Route::get('/', function(){
+    return view('welcome');
+});
+
+Route::get('/About',function(){
+    return view('test');
+});

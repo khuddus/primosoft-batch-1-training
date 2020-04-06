@@ -1,9 +1,6 @@
-<!doctype html>
-<html>
-<body>
-    <div>
+@extends('layout')
+@section('content')
+<div>
     <h1>My Posts</h1>
-    <p>{{$post -> body}}</p>
-    </div>
-</body>
-</html>
+</div>
+@endsection
