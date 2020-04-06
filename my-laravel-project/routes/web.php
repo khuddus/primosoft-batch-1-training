@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $name = request('name');
     return view('welcome');
 });
 
-Route::get('posts/{post}', 'PostsController@show');
+Route::get('/contact',function(){
+    return view('contact');
+});
