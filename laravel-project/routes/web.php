@@ -16,6 +16,18 @@ Route::get('/', function(){
     return view('welcome');
 });
 
-Route::get('/About',function(){
-    return view('test');
+Route::get('/another_page',function(){
+    return view('another_page');
+});
+
+Route::get('/examples',function(){
+    return view('examples');
+});
+
+Route::get('/page',function(){
+    return view('page');
+});
+
+Route::get('/contact',function(){
+    return view('contact');
 });
