@@ -21,7 +21,7 @@
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class= "{{ Request::path() === '/' ? 'selected' : '' }}"><a href="index.html">Home</a></li>
+          <li class= "{{ Request::path() === '/' ? 'selected' : '' }}"><a href="/">Home</a></li>
           <li class= "{{ Request::path() === 'examples' ? 'selected' : '' }}"><a href="/examples">Examples</a></li>
           <li class= "{{ Request::path() === 'page' ? 'selected' : '' }}"><a href="/page">A Page</a></li>
           <li class= "{{ Request::path() === 'another_page' ? 'selected' : '' }}"><a href="/another_page">Another Page</a></li>
