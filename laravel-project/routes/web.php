@@ -11,17 +11,12 @@
 |
 */
 
-
-Route::get('/', function(){
-    return view('welcome');
+Route::get('/test/{post}', function($post){
+    return view('articles.show',['post'=>$post]);
 });
 
 Route::get('/another_page',function(){
     return view('another_page');
-});
-
-Route::get('/examples',function(){
-    return view('examples');
 });
 
 Route::get('/page',function(){
@@ -31,3 +26,18 @@ Route::get('/page',function(){
 Route::get('/contact',function(){
     return view('contact');
 });
+
+Route::get('/articles',function(){
+    return View::make('articles.index', [
+        'articles' => App\Articles::latest()->get()
+    ]);
+});
+
+Route::get('/articles','ArticlesController@index')->name('articles.index');
+Route::post('/articles','ArticlesController@store');
+Route::get('/articles/create', 'ArticlesController@create');
+Route::get('/articles/{articles}','ArticlesController@show')->name('articles.show');
+Route::get('/articles/{article}/edit','ArticlesController@edit');
+Route::put('/articles/{article}','ArticlesController@update');
+
+

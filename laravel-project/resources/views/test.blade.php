@@ -1,6 +1,6 @@
-@extends('layout')
-@section('content')
-<div>
-    <h1>My Posts</h1>
-</div>
-@endsection
+<!doctype html>
+<html>
+<body>
+    <div>{{$post}}</div>
+</body>
+</html

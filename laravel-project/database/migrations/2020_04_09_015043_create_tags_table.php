@@ -14,20 +14,20 @@ class CreateTagsTable extends Migration
     public function up()
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->string('name');
             $table->timestamps();
         });
 
-        Schema::create('article_tag',function(Blueprint $table){
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('article_id');
-            $table->unsignedBigInteger('tag_id');
+        Schema::create('articles_tags',function(Blueprint $table){
+            $table->Increments('id');
+            $table->unsignedinteger('articles_id');
+            $table->unsignedinteger('tags_id');
             $table->timestamps();
 
-            $table->unique(['article_id','tag_id']);
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->unique(['articles_id','tags_id']);
+            $table->foreign('articles_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->foreign('tags_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 
@@ -38,6 +38,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        //
     }
 }
