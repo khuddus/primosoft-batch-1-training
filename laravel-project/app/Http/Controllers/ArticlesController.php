@@ -31,7 +31,9 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        return view('articles.create',[
+            'tags' => Tags::all()
+        ]);
     }
 
     /**
@@ -40,10 +42,14 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //Articles::create($this->validateArticle());
-
+        $this->validateArticle();
+        $articles = new Articles(requesr(['title','excerpt','body']));
+        $articles->user_id = 1;
+        $articles->save();
+        $articles->tags()->attach(request('tags'));
+        return redirect(route('articles.index'));
     }
 
     /**
@@ -78,6 +84,8 @@ class ArticlesController extends Controller
     public function update(Request $request, Article $article)
     {
         //
+        $article->update($this->validateArticle());
+        return redirect($article->path());
     }
 
     /**
@@ -89,5 +97,13 @@ class ArticlesController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+    protected function validateArticle(){
+        return request()->validate([
+            'title'=>'required',
+            'body' =>'required',
+            'excerpt'=>'required',
+            'tags'=>'exists:tags,id'
+        ])
     }
 }
