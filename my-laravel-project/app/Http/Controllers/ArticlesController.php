@@ -33,7 +33,9 @@ class ArticlesController extends Controller
     public function create()
     {
         //
-        return view('articles.create');
+        return view('articles.create',[
+            "tags"=>Tag::all()
+        ]);
     }
 
     /**
@@ -45,15 +47,15 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         //
-
-        $article = new Article();
-        $article->title = $request->title;
-        $article->excerpt = $request->excert;
-        $article->body = $request->body;
+        $this->validateArticle();
+        $article = new Article(request(['title','excerpt','body']));
+        $article->user_id=1;
         $article->save();
+        $article->tags()->attach(request('tags'));
 
-        return redirect('/articles.index');
+        return redirect('/articles');
     }
+
 
     /**
      * Display the specified resource.
@@ -101,5 +103,14 @@ class ArticlesController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+
+    protected function validateArticle(){
+        return request()->validate([
+            'title'=>'required',
+            'body' =>'required',
+            'excerpt'=>'required',
+            'tags' => 'exists:tags,id'
+        ]);
     }
 }

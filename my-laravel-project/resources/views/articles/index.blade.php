@@ -9,7 +9,7 @@
 				<h2> <a href="/articles/{{$article->id}}"> {{$article->title}}</a></h2>
 			</div>
 			<p><img src="images/banner.jpg" alt="" class="image image-full" /> </p>
-			  {{!! $article->excerpt !!}};
+			  {{ $article->excerpt}}
         </div>
         @empty
             <p>No Relevent articles yet</p>
