@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
-function App() {
-  return <h1>Functional Components</h1>;
-}
-
+const App = () => {
+  const [greeting, setstate] = useState(
+    'Function Components!'
+  );
+  return (
+    <div>
+      <h1>{greeting}</h1>
+      <input
+        type="text"
+        onChange={event => setstate(event.target.value)}
+      />
+    </div>
+  );
+};
 export default App;
