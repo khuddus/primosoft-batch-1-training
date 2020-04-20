@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import './App.css';
-
+import ClassCounter from './components/ClassCounter';
+import Counter from './components/functionCounter';
+import CounterTwo from './components/functionCounterTwo';
+import Form from './components/useStateWithObject';
+import Array from './components/useStateWithArray';
 const App = () => {
-  const [greeting, setstate] = useState(
-    'Function Components!'
-  );
+  
   return (
     <div>
-      <h1>{greeting}</h1>
-      <input
-        type="text"
-        onChange={event => setstate(event.target.value)}
-      />
+      <h1>'Function Components!'</h1>
+      <Array />
+      
     </div>
   );
 };
